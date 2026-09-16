@@ -1,0 +1,1 @@
+import type React from 'react'; export interface AssetItem { id: string; name: string; subtitle?: string; icon?: React.ReactNode; status?: React.ReactNode; progress?: number; action?: React.ReactNode; } export interface AssetListDashboardProps { assets: AssetItem[]; onSelect?: (asset: AssetItem) => void; emptyMessage?: string; className?: string; }

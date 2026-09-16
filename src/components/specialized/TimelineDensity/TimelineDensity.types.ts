@@ -1,0 +1,2 @@
+export interface TimelineEvent { colIdx?: number; type?: string; value?: number; }
+export interface TimelineDensityProps { columns?: number; data?: TimelineEvent[]; cursorIndex?: number | null; highlightNow?: boolean; className?: string; onCursorChange?: (index: number) => void; }

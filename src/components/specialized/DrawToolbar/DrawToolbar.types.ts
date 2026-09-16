@@ -1,0 +1,1 @@
+import type React from 'react'; export interface DrawTool { id: string; label: string; icon?: React.ReactNode; } export interface DrawToolbarProps { tools: DrawTool[]; active?: string; onChange?: (id: string) => void; actions?: React.ReactNode; className?: string; }

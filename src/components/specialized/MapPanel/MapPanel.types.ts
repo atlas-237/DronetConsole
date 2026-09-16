@@ -1,0 +1,4 @@
+import type React from 'react';
+export interface MapTabItem { id?: string | number; title?: string; subtitle?: string; color?: string; right?: string; time?: string; text?: string; [key: string]: unknown; }
+export interface MapTab { label: string; count?: number; type?: 'list' | 'detail' | 'feed'; items?: MapTabItem[]; pairs?: Array<{ label: string; value: string | number }>; onItemClick?: (item: MapTabItem) => void; render?: () => React.ReactNode; }
+export interface MapPanelProps { tabs?: MapTab[]; defaultTab?: number; width?: number; defaultOpen?: boolean; onResize?: (width: number) => void; className?: string; }

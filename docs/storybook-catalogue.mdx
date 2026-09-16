@@ -1,0 +1,262 @@
+# Catalogue des stories
+
+Cette page décrit le périmètre couvert par Storybook pour DronetConsole. Chaque story est un scénario de référence : elle montre un état visible, les propriétés importantes à contrôler et, lorsque c'est pertinent, le comportement attendu après une interaction.
+
+## Lire une story
+
+- **Default / Standard** : état nominal à utiliser comme point de départ.
+- **Variant métier** : combinaison de données représentative d'une opération réelle.
+- **État limite** : vide, erreur, chargement, danger, désactivé ou contenu volumineux.
+- **Interaction** : scénario pilotable avec les contrôles Storybook ou les boutons de la story.
+- **Responsive** : story prévue pour être vérifiée avec les viewports desktop et mobile.
+
+Les composants partagent le thème Darta chargé par `.storybook/preview.ts` et `src/theme/index.css`. Les couleurs, espacements et polices utilisent les tokens du thème ; les composants migrés utilisent les utilitaires Tailwind v4.
+
+## Source de vérité
+
+Le catalogue Storybook actuel est composé de **70 stories colocalisées** dans `src/components/**`. Chaque composant documenté doit conserver son fichier `Component.stories.tsx`, activer `autodocs` et fournir `parameters.docs.description.component`.
+
+Les anciens catalogues sous `src/stories/**` ne font plus partie de l'arborescence active. Les exemples de cette page qui décrivent encore ces anciens regroupements sont des scénarios fonctionnels historiques ; la story colocalisée du composant est la référence à ouvrir dans Storybook.
+
+## UI
+
+### UI / Button
+
+Fichier : `src/components/ui/Button/Button.stories.tsx`
+
+- `Default` : bouton neutre avec contenu textuel et état activé.
+- `Primary` : action principale avec le ton de marque.
+- `IconOnly` : bouton carré d'outil, vérifie le mode `icon` et l'attribut `aria-label`.
+
+À vérifier : les variantes `default`, `primary`, `quiet`, `danger`, les tailles `default`, `sm`, `icon`, `disabled`, `type`, `icon`, `iconRight` et le focus clavier.
+
+### UI / Alert
+
+Fichier : `src/components/ui/Alert/Alert.stories.tsx`
+
+- `Info` : information neutre avec titre.
+- `Success` : confirmation d'une opération terminée.
+- `Warning` : avertissement nécessitant l'attention de l'opérateur.
+- `Danger` : incident critique ; le rôle ARIA devient `alert`.
+- `WithAction` : alerte avec bouton d'action.
+- `Dismissible` : alerte fermable sans action principale.
+- `ActionAndDismissible` : vérifie que l'action est prioritaire et masque la fermeture.
+- `WithoutTitle` : contenu court sans titre.
+
+À vérifier : le ton, le rôle ARIA, l'icône automatique ou personnalisée, `onAction`, `onDismiss` et la priorité action/fermeture.
+
+### UI / Avatar
+
+Fichier : `src/components/ui/Avatar/Avatar.stories.tsx`
+
+- `Default` : initiales générées depuis un nom complet.
+- `SingleName` : initiales pour un nom composé d'un seul mot.
+- `WithoutName` : valeur de repli `?`.
+- `WithImage` : image distante à la place des initiales.
+- `CustomColor` : couleur fournie par le consommateur.
+- `Small` / `Large` : vérification des dimensions extrêmes usuelles.
+- `Clickable` : rôle bouton et callback de clic.
+- `WithInfo` : avatar accompagné du nom et du rôle.
+- `WithInfoWithoutRole` : bloc d'information sans rôle secondaire.
+- `WithInfoCustomAvatar` : transmission de propriétés à l'avatar interne.
+- `WithInfoClickable` : interaction sur le bloc complet.
+
+À vérifier : la stabilité de la palette déterministe, l'alt text, la taille, le comportement image/initiales et l'accessibilité interactive.
+
+### UI / Badge
+
+Fichier : `src/components/ui/Badge/Badge.stories.tsx`
+
+- `Variants` : tons `default`, `ok`, `warn`, `danger` et `brand`, avec et sans point.
+- `Small` : badge compact destiné aux listes et tableaux.
+
+À vérifier : la lisibilité du contraste, le point d'état et la conservation du contenu long sur une seule ligne.
+
+### UI / Field
+
+Fichier : `src/components/ui/Field/Field.stories.tsx`
+
+- `Default` : label obligatoire, champ enfant et texte d'aide.
+- `Error` : message d'erreur prioritaire sur le texte d'aide.
+
+À vérifier : l'association `label`/`htmlFor`, l'indicateur obligatoire et la priorité `error > help`.
+
+### UI / Input
+
+Fichier : `src/components/ui/Input/Input.stories.tsx`
+
+- `Text` : champ texte standard.
+- `Invalid` : champ avec `aria-invalid` et bordure d'erreur.
+- `Select` : rendu polymorphe avec options natives.
+- `Textarea` : rendu multi-ligne avec `rows`.
+
+À vérifier : la ref, `value`/`onChange`, `disabled`, le placeholder, l'icône préfixe et les trois éléments HTML (`input`, `select`, `textarea`).
+
+### UI / SegmentedControl
+
+Fichier : `src/components/ui/SegmentedControl/SegmentedControl.stories.tsx`
+
+- `Default` : mode sélectionné dans un groupe d'options textuelles.
+- `WithDisabledOption` : option visible mais non interactive.
+
+À vérifier : `aria-pressed`, l'index renvoyé par `onChange`, l'état actif et le clavier.
+
+### UI / FilterChip
+
+Fichier : `src/components/ui/FilterChip/FilterChip.stories.tsx`
+
+- `Default` : filtre actif simple.
+- `Shapes` : marqueurs carré, diamant et cercle.
+- `Group` : groupe de filtres avec identifiants et couleurs différents.
+
+À vérifier : activation/désactivation, interaction Enter/Espace, `activeItems`, `onChange`, couleurs personnalisées et reflow mobile.
+
+## Data
+
+### Data / Panel & KPI
+
+Fichiers : `src/components/data/Panel/Panel.stories.tsx`, `HeroKPI.stories.tsx`, `KVGrid.stories.tsx`, `MetricsGrid.stories.tsx`
+
+- `PanelSimple` : panneau de base avec titre, icône et contenu.
+- `PanelWithRightBadge` : panneau avec indicateur d'état et grille clé/valeur.
+- `PanelCollapsible` : ouverture et fermeture d'un panneau.
+- `PanelTightBody` : variante compacte du corps.
+- `HeroKPIBasic` : indicateurs principaux avec tons d'état.
+- `HeroKPIWithMetrics` : KPI principaux suivis d'une grille de métriques.
+- `KVGridFormats` : valeurs texte, numériques, unités et tons `ok/warn/danger`.
+- `MetricsGridShowcase` : métriques avec valeurs nulles, unités et aides contextuelles.
+
+À vérifier : hiérarchie visuelle, alignement des valeurs, densité et comportement collapsible.
+
+### Data / Tableaux, Tabs & Listes
+
+Fichiers : `src/components/data/DataTable/DataTable.stories.tsx`, `Tabs.stories.tsx`, `ListRow.stories.tsx`
+
+- `DataTableBasic` : tableau de missions avec cellules rendues.
+- `DataTableWithSort` : tri ascendant puis descendant sur les colonnes triables.
+- `DataTableEmpty` : tableau sans résultat et contenu vide.
+- `TabsControlled` : onglets contrôlés depuis l'état parent.
+- `TabsWithInlineContent` : contenu directement fourni par chaque onglet.
+- `ListRowBasic` : ligne de liste informative.
+- `ListRowClickable` : ligne sélectionnable avec callback.
+
+À vérifier : navigation clavier, sélection de ligne, tri, contenu vide et lisibilité sur petit écran.
+
+## Feedback
+
+### Feedback / Modal
+
+Fichier : `src/components/feedback/Modal/Modal.stories.tsx`
+
+- `Default` : modale standard avec footer par défaut.
+- `Small` / `Large` / `ExtraLarge` : tailles et contenus croissants.
+- `DangerConfirm` : confirmation destructive.
+- `CustomFooter` : remplacement complet du footer.
+- `WithoutFooter` : modale informative sans actions.
+- `AllSizes` : comparaison visuelle de toutes les tailles.
+
+À vérifier : fermeture, confirmation, touche Échap, focus, overlay, footer personnalisé et responsive.
+
+### Feedback / États
+
+Fichiers : `src/components/feedback/EmptyState/EmptyState.stories.tsx`, `ErrorState.stories.tsx`, `LoadingState.stories.tsx`, `Skeleton.stories.tsx`
+
+- `EmptyStateDefault` : absence de données avec action de création.
+- `EmptyStateCustomIcon` : absence de données spécialisée galerie.
+- `ErrorStateDefault` : erreur avec message technique masqué ou détaillé selon le composant.
+- `LoadingStateDefault` : chargement textuel.
+- `SkeletonVariants` : variantes de skeleton pour lignes et cartes.
+- `AllStatesShowcase` : comparaison simultanée des états empty/error/loading/skeleton.
+
+À vérifier : message utile, action disponible, hiérarchie et absence de saut de layout pendant le chargement.
+
+### Feedback / Toast
+
+Fichier : `src/components/feedback/Toast/Toast.stories.tsx`
+
+- `Default` : notification simple avec disparition automatique.
+- `WithUndo` : action d'annulation avant expiration.
+- `LiveDemo` : déclenchement de notifications `ok`, `warn`, `info` et `danger` via le contexte.
+
+À vérifier : durée de vie, fermeture manuelle, action undo, `aria-live` et empilement des notifications.
+
+## Layout
+
+### Layout / AppShell
+
+Fichiers : `src/components/layout/AppShell/AppShell.stories.tsx`, `Sidebar.stories.tsx`, `Topbar.stories.tsx`, `MobileNav.stories.tsx`
+
+- `Standard` : shell complet avec rail, topbar et contenu.
+- `WithSidebar` : navigation par groupes, page active et profil opérateur.
+- `MobileLayout` : navigation inférieure et contenu mobile.
+
+À vérifier : réduction du rail, navigation active, responsive sous la breakpoint `lg`, débordement horizontal et positionnement du contenu.
+
+## Modales métier
+
+### Modales / Confirm & NewMission
+
+Fichiers : `src/components/modals/ConfirmModal/ConfirmModal.stories.tsx`, `NewMissionModal.stories.tsx`
+
+- `ConfirmModalSimple` : confirmation destructive avec message simple.
+- `ConfirmModalInfo` : confirmation non destructive.
+- `NewMissionModalDemo` : formulaire de création avec validation du nom et capacité de zones.
+
+À vérifier : validation, fermeture, confirmation, état invalide et remise à zéro à chaque ouverture.
+
+### Modales / IssueToken & AssetForm
+
+Fichiers : `src/components/modals/IssueTokenModal/IssueTokenModal.stories.tsx`, `AssetFormModal.stories.tsx`
+
+- `IssueTokenModalForAsset` : émission d'un jeton pour un appareil existant.
+- `IssueTokenModalNoAsset` : émission sans appareil sélectionné.
+- `AssetFormModalCreate` : création d'un appareil avec champs requis.
+- `AssetFormModalEdit` : édition d'un appareil et affichage de ses métadonnées.
+
+À vérifier : scopes, durée de validité, erreurs de formulaire, compteurs et transitions entre étapes.
+
+### Modales / MissionEdit & ArtifactViewer
+
+Fichiers : `src/components/modals/MissionEditModal/MissionEditModal.stories.tsx`, `ArtifactViewerModal.stories.tsx`
+
+- `MissionEditModalCreate` : création complète d'une mission.
+- `MissionEditModalEditActive` : édition d'une mission active existante.
+- `ArtifactViewerModalDemo` : navigation, téléchargement et suppression d'artefacts.
+
+À vérifier : contraintes d'activation sans appareil, navigation clavier de la visionneuse, index courant et footer d'actions.
+
+## Specialized
+
+### Specialized / Carte & Vidéo
+
+Fichiers : `src/components/specialized/MapPanel/MapPanel.stories.tsx`, `VideoFrame.stories.tsx`, `VideoPlayer.stories.tsx`
+
+- `MapPanelDefault` : panneau de carte ouvert avec onglets appareils, zones et flux.
+- `MapPanelClosed` : panneau replié.
+- `VideoFrameOSD` : affichage OSD jour, nuit, batterie critique et haute altitude.
+- `VideoPlayerFullTrack` : lecture, pause et progression sur une trace complète.
+
+À vérifier : redimensionnement du panneau, sélection d'onglet, lecture, seek, contraste OSD et absence de débordement.
+
+## Views
+
+### Views / Dashcboard
+
+Fichiers : `src/views/DashboardView.jsx`, `src/views/DashboardView.stories.jsx`
+
+- `Standard` : tableau de bord opérationnel complet avec données de démonstration.
+- `WithMissionButtonAction` : vérifie l'ouverture du formulaire de nouvelle mission depuis le CTA.
+
+À vérifier : densité desktop, comportement responsive, flux d'activité, panneaux KPI et ouverture de modal.
+
+## Règles de maintenance
+
+Lorsqu'un composant reçoit une nouvelle prop ou un nouvel état visuel :
+
+1. Ajouter ou modifier un `argType` avec une description et une valeur par défaut.
+2. Ajouter une story nommée qui montre le comportement concerné.
+3. Documenter l'interaction attendue dans la description de la story.
+4. Ajouter un test pour la prop critique ou le callback associé.
+5. Vérifier `npx tsc --noEmit` et `npm run lint` avant de publier la documentation. Les builds sont exécutés séparément dans la CI ou lors d'une validation de release.
+
+Les stories servent de contrat visuel et comportemental ; elles ne doivent pas dépendre d'une API distante ni de données aléatoires non contrôlées.

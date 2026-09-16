@@ -1,0 +1,1 @@
+import type React from 'react'; export interface AuthCardProps { title?: string; subtitle?: string; logo?: React.ReactNode; tag?: React.ReactNode; children?: React.ReactNode; footer?: React.ReactNode; className?: string; }

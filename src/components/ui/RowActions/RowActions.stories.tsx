@@ -1,0 +1,5 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
+import RowActions from './RowActions';
+const meta = { title: 'UI/RowActions', component: RowActions, tags: ['autodocs'], parameters: { layout: 'centered' , docs: { description: { component: 'Composant RowActions documenté par les props définies dans args et argTypes. États couverts par les stories: Default, Single, Disabled. Vérifier les callbacks, contrôles et interactions exposés par les variantes.' } } }, args: { actions: [{ label: 'Modifier', onClick: fn() }, { label: 'Supprimer', danger: true, onClick: fn() }] } } satisfies Meta<typeof RowActions>;
+export default meta; type Story = StoryObj<typeof meta>; export const Default: Story = {}; export const Single: Story = { args: { actions: [{ label: 'Ouvrir', onClick: fn() }] } }; export const Disabled: Story = { args: { actions: [{ label: 'Indisponible', disabled: true }] } };

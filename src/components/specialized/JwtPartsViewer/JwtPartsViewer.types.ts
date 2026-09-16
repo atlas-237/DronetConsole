@@ -1,0 +1,1 @@
+export interface JwtPart { label: string; value: string; color?: string; } export interface JwtPartsViewerProps { token?: string; parts?: JwtPart[]; className?: string; }

@@ -1,0 +1,1 @@
+import type React from 'react'; export interface ArtifactThumbProps { src?: string; alt?: string; title?: string; meta?: React.ReactNode; caption?: React.ReactNode; onClick?: React.MouseEventHandler<HTMLButtonElement>; className?: string; }

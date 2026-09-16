@@ -1,0 +1,5 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import BandCards from './BandCards';
+const cells = [{ label: 'Observations', value: 142, unit: 'événements', series: [2, 4, 3, 6, 5] }, { label: 'Alertes', value: 3, tone: 'danger' as const, delta: 1, deltaTone: 'danger' as const }];
+const meta = { title: 'Specialized/BandCards', component: BandCards, parameters: { layout: 'padded' , docs: { description: { component: 'Composant BandCards documenté par les props définies dans args et argTypes. États couverts par les stories: Default, Healthy, Critical. Vérifier les callbacks, contrôles et interactions exposés par les variantes.' } } }, tags: ['autodocs'], argTypes: { className: { control: 'text' } }, args: { cells } } satisfies Meta<typeof BandCards>;
+export default meta; type Story = StoryObj<typeof meta>; export const Default: Story = {}; export const Healthy: Story = { args: { cells: [{ label: 'Disponibilité', value: 99.8, unit: '%', tone: 'ok' }] } }; export const Critical: Story = { args: { cells: [{ label: 'Alertes', value: 24, tone: 'danger', delta: 12, deltaTone: 'danger' }] } };

@@ -1,0 +1,2 @@
+import type React from 'react'; 
+export interface TagChipProps extends React.HTMLAttributes<HTMLSpanElement> { label?: string; tone?: string; removable?: boolean; onRemove?: () => void; children?: React.ReactNode; }

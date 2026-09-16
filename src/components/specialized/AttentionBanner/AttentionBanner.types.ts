@@ -1,0 +1,1 @@
+import type React from 'react'; export interface AttentionBannerProps { children?: React.ReactNode; message?: string; actionLabel?: string; onAction?: () => void; onClose?: () => void; className?: string; }

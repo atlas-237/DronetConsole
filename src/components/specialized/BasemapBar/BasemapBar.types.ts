@@ -1,0 +1,1 @@
+export interface BasemapOption { id: string; label: string; } export interface BasemapBarProps { options: BasemapOption[]; selected?: string; onChange?: (id: string) => void; className?: string; }

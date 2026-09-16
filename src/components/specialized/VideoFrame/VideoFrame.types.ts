@@ -1,0 +1,1 @@
+export interface VideoFrameProps { alt?: number; dist?: number; t?: number; heading?: number; batt?: number; className?: string; }

@@ -1,0 +1,1 @@
+import type { TruncationBannerProps } from './TruncationBanner.types'; export default function TruncationBanner({ children, message, actionLabel, onAction, className = '' }: TruncationBannerProps) { return <div className={`trunc ${className}`} role="note"><span>{children || message}</span>{actionLabel && <button type="button" onClick={onAction}>{actionLabel}</button>}</div>; }

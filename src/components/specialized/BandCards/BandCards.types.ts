@@ -1,0 +1,2 @@
+export interface BandCell { label: string; value: string | number; unit?: string; delta?: string | number; deltaUnit?: string; tone?: string; deltaTone?: string; series?: number[]; sparkColor?: string; }
+export interface BandCardsProps { cells?: BandCell[]; className?: string; }

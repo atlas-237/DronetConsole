@@ -1,0 +1,1 @@
+import type React from 'react'; export interface NotificationItem { id: string; title: string; message?: string; time?: string; unread?: boolean; } export interface NotificationPopoverProps { notifications: NotificationItem[]; open?: boolean; onRead?: (item: NotificationItem) => void; onClose?: () => void; footer?: React.ReactNode; className?: string; }

@@ -1,0 +1,1 @@
+import type React from 'react'; export interface CollapsiblePanelHeaderProps { title: string; icon?: React.ReactNode; right?: React.ReactNode; open?: boolean; onToggle?: (open: boolean) => void; className?: string; }

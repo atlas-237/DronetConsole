@@ -1,0 +1,1 @@
+import type React from 'react'; export interface BreadcrumbItem { label: string; href?: string; current?: boolean; bold?: boolean; } export interface BreadcrumbsProps { items: BreadcrumbItem[]; onNavigate?: (item: BreadcrumbItem) => void; className?: string; }

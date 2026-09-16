@@ -1,0 +1,3 @@
+export interface GalleryItem { id?: string | number; time?: string; title?: string; asset?: string; subtitle?: string; lat?: number; lng?: number; [key: string]: unknown; }
+export interface GalleryProps { items?: GalleryItem[]; size?: 'default' | 'mini'; onClick?: (item: GalleryItem) => void; className?: string; }
+export interface GalleryCardProps { item: GalleryItem; size?: 'default' | 'mini'; onClick?: (item: GalleryItem) => void; }

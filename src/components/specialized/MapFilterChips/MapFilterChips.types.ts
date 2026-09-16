@@ -1,0 +1,1 @@
+export interface MapFilterChip { id: string; label: string; count?: number; color?: string; } export interface MapFilterChipsProps { chips: MapFilterChip[]; selected?: string[]; onToggle?: (id: string) => void; className?: string; }

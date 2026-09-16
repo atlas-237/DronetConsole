@@ -1,0 +1,1 @@
+import type React from 'react'; export interface LegendItem { label: string; color?: string; icon?: React.ReactNode; } export interface LegendBoxProps { title?: string; items: LegendItem[]; className?: string; }

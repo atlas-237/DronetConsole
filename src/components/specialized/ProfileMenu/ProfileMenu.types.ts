@@ -1,0 +1,1 @@
+import type React from 'react'; export interface ProfileMenuItem { id: string; label: string; icon?: React.ReactNode; separator?: boolean; disabled?: boolean; } export interface ProfileMenuProps { items: ProfileMenuItem[]; onSelect?: (item: ProfileMenuItem) => void; className?: string; }

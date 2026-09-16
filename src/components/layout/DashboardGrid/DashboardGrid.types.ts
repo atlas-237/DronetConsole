@@ -1,0 +1,1 @@
+import type React from 'react'; export type DashboardGridColumns = 3 | 4 | 5 | 6 | 7 | 8 | 12; export interface DashboardGridProps extends React.HTMLAttributes<HTMLDivElement> { columns?: DashboardGridColumns; fixed?: boolean; children?: React.ReactNode; }

@@ -1,0 +1,1 @@
+export interface ZoneCapacityProps { used?: number; max?: number; warnAt?: number; dangerAt?: number; className?: string; }

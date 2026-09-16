@@ -1,0 +1,3 @@
+export interface VideoTrackFrame { alt?: number; dist?: number; t?: number; heading?: number; batt?: number; speed?: number; }
+export interface VideoPlayerProps { track?: VideoTrackFrame[]; assetName?: string; autoPlay?: boolean; onTick?: (frame: VideoTrackFrame, index: number) => void; className?: string; }
+export interface TelemetryFieldProps { label: string; value: string; tone?: 'danger' | 'warn' | 'ok'; }

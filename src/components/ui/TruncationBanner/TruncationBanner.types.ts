@@ -1,0 +1,1 @@
+import type React from 'react'; export interface TruncationBannerProps { children?: React.ReactNode; message?: string; actionLabel?: string; onAction?: () => void; className?: string; }

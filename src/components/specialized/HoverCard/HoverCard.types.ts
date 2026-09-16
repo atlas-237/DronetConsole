@@ -1,0 +1,1 @@
+import type React from 'react'; export interface HoverCardProps { title: string; subtitle?: string; status?: React.ReactNode; battery?: React.ReactNode; range?: React.ReactNode; chips?: React.ReactNode; children?: React.ReactNode; className?: string; }

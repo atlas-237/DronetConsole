@@ -1,0 +1,2 @@
+import type { RowActionsProps } from './RowActions.types';
+export default function RowActions({ actions, className = '' }: RowActionsProps) { return <div className={`rowacts ${className}`}>{actions.map(action => <button key={action.label} type="button" disabled={action.disabled} className={action.danger ? 'danger' : undefined} aria-label={action.label} onClick={action.onClick}>{action.icon}{!action.icon && action.label}</button>)}</div>; }
